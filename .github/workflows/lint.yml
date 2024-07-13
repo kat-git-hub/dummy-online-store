@@ -32,6 +32,7 @@ jobs:
     - name: Download ChromeDriver
       run: |
         cd ${{ github.workspace }}
+        mkdir ./drivers
         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -n1)
         echo "Chrome version: $CHROME_VERSION"
         CHROME_VERSION_MAJOR=$(echo $CHROME_VERSION | cut -d '.' -f 1)
