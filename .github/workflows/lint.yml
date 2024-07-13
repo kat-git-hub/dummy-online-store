@@ -6,6 +6,12 @@ jobs:
   linter-check:
     name: Linter Check
     runs-on: ubuntu-latest
+    
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
 
     steps:
     - uses: actions/checkout@v2
