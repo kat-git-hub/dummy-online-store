@@ -1,0 +1,7 @@
+[run]
+source = demoblaze
+branch = True
+
+[report]
+omit =
+    */tests/*
