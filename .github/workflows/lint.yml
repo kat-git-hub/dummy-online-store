@@ -40,7 +40,7 @@ jobs:
         CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
         echo "Latest ChromeDriver version: $CHROMEDRIVER_VERSION"
         wget -N https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip -d drivers/chromedriver
+        unzip chromedriver_linux64.zip -d ./drivers/
         rm chromedriver_linux64.zip
     
     - name: Lint with flake8
