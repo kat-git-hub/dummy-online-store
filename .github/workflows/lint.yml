@@ -1,24 +1,18 @@
-name: Selenium QA Tests
+name: linter-check
 
-on: [push, pull_request]
+on: push
 
 jobs:
-  test:
+  linter-check:
+    name: Linter Check
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Python ${{ matrix.python-version }}
+    - uses: actions/checkout@v2
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python-version }}
-
+        python-version: '3.x'
     - name: Install dependencies
       run: |
         pip3 install poetry
@@ -26,16 +20,10 @@ jobs:
     - name: Lint with flake8
       run: |
         make lint
-
-    - name: Run tests
-      run: |
-        make lint
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.7.4
       env:
-        DISPLAY: :99.0
-
-    - name: Upload test results
-      if: always()
-      uses: actions/upload-artifact@v2
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
-        name: test-results
-        path: pytest_results.xml
+        coverageCommand: make test-coverage
+        debug: true
