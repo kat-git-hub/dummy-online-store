@@ -31,6 +31,7 @@ jobs:
 
     - name: Download ChromeDriver
       run: |
+        cd ${{ github.workspace }}
         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -n1)
         echo "Chrome version: $CHROME_VERSION"
         CHROME_VERSION_MAJOR=$(echo $CHROME_VERSION | cut -d '.' -f 1)
@@ -38,7 +39,7 @@ jobs:
         CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
         echo "Latest ChromeDriver version: $CHROMEDRIVER_VERSION"
         wget -N https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip -d /usr/local/bin
+        unzip chromedriver_linux64.zip -d drivers/chromedriver
         rm chromedriver_linux64.zip
     
     - name: Lint with flake8
