@@ -5,4 +5,4 @@ lint:
 test:
 	poetry run python -m unittest discover -s tests
 test-coverage:
-	poetry run pytest --cov=demoblaze.py --cov-report xml
+	pytest --cov=demoblaze --cov-report=xml tests/
