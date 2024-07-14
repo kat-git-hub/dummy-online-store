@@ -2,13 +2,23 @@ import time
 from config import Config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
+#from selenium.webdriver.chrome.service import Service
 
 
 class Demoblaze:
+    # def __init__(self):
+    #     service = Service(executable_path=Config.DRIVER_PATH)
+    #     self.driver = webdriver.Chrome(service=service)
+    #     self.driver.implicitly_wait(Config.IMPLICIT_WAIT)
+    #     self.driver.get(Config.BASE_URL)
+
     def __init__(self):
-        service = Service(executable_path=Config.DRIVER_PATH)
-        self.driver = webdriver.Chrome(service=service)
+        # Setup remote WebDriver to connect to Selenium Grid
+        chrome_options = webdriver.ChromeOptions()
+        self.driver = webdriver.Remote(
+            command_executor=Config.SELENIUM_HUB_URL,
+            options=chrome_options
+        )
         self.driver.implicitly_wait(Config.IMPLICIT_WAIT)
         self.driver.get(Config.BASE_URL)
 
@@ -23,7 +33,7 @@ class Demoblaze:
     def add_to_cart(self):
         add_to_cart_button = self.driver.find_element(By.XPATH, "//a[text()='Add to cart']")
         add_to_cart_button.click()
-        time.sleep(2)  # Wait for alert
+        time.sleep(2)
         self.driver.switch_to.alert.accept()
 
     def go_to_cart(self):

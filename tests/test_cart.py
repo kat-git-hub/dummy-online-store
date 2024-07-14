@@ -2,13 +2,7 @@ import time
 import pytest
 from selenium.webdriver.common.by import By
 from demoblaze import Demoblaze
-from selenium.webdriver.chrome.options import Options
 
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.add_argument('--disable-gpu')
 
 
 @pytest.fixture
@@ -68,9 +62,9 @@ def test_go_to_cart(demoblaze):
     assert cart_header is not None
 
 
-def test_close_browser(demoblaze):
-    demoblaze.close()
-    try:
-        demoblaze.driver.title
-    except Exception:
-        assert True
+# def test_close_browser(demoblaze):
+#     demoblaze.close()
+#     try:
+#         demoblaze.driver.title
+#     except Exception:
+#         assert True

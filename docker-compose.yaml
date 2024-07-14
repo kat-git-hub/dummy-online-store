@@ -1,0 +1,15 @@
+version: '3'
+services:
+  chrome-hub:
+    image: selenium/standalone-chromium:latest
+    container_name: standalone-chromium
+    ports:
+      - "4444:4444"
+      - "5900:5900"
+      - "7900:7900"
+    environment:
+      - SE_SESSION_TIMEOUT=2000
+      - SE_SESSION_REQUEST_TIMEOUT=2000
+      - SE_SESSION_RETRY_INTERVAL=2
+    volumes:
+      - /dev/shm:/dev/shm
