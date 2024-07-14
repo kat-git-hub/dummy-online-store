@@ -2,18 +2,10 @@ import time
 from config import Config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-#from selenium.webdriver.chrome.service import Service
 
 
 class Demoblaze:
-    # def __init__(self):
-    #     service = Service(executable_path=Config.DRIVER_PATH)
-    #     self.driver = webdriver.Chrome(service=service)
-    #     self.driver.implicitly_wait(Config.IMPLICIT_WAIT)
-    #     self.driver.get(Config.BASE_URL)
-
     def __init__(self):
-        # Setup remote WebDriver to connect to Selenium Grid
         chrome_options = webdriver.ChromeOptions()
         self.driver = webdriver.Remote(
             command_executor=Config.SELENIUM_HUB_URL,
