@@ -8,15 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     
     services:
-      selenium:
+      # selenium:
+      #   image: selenium/standalone-chrome:latest
+      #   ports:
+      #     - 4444:4444
+      chrome-hub:
         image: selenium/standalone-chromium:latest
+        container_name: standalone-chromium
         ports:
-          - 4444:4444
-# chrome-hub:
-#     image: selenium/standalone-chromium:latest
-#     container_name: standalone-chromium
-#     ports:
-#       - "4444:4444"
+          - "4444:4444"
 
     steps:
     - uses: actions/checkout@v2
