@@ -4,7 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-
 class Demoblaze:
     def __init__(self):
         chrome_options = webdriver.ChromeOptions()
