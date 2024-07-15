@@ -26,13 +26,13 @@ def test_select_product(demoblaze):
     assert product_title is not None
 
 
-# def test_add_product_to_cart(demoblaze):
-#     demoblaze.navigate_to_category("Phones")
-#     demoblaze.select_product("Samsung galaxy s6")
-#     demoblaze.add_to_cart()
-#     demoblaze.go_to_cart()
-#     cart_items = demoblaze.driver.find_elements(By.XPATH, "//tbody[@id='tbodyid']/tr")
-#     assert len(cart_items) > 0
+def test_add_product_to_cart(demoblaze):
+    demoblaze.navigate_to_category("Phones")
+    demoblaze.select_product("Samsung galaxy s6")
+    demoblaze.add_to_cart()
+    demoblaze.go_to_cart()
+    cart_items = demoblaze.driver.find_elements(By.XPATH, "//tbody[@id='tbodyid']/tr")
+    assert len(cart_items) > 0
 
 
 def test_place_order(demoblaze):

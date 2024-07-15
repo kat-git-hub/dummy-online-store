@@ -2,6 +2,7 @@ import time
 from config import Config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import StaleElementReferenceException
 
 
 class Demoblaze:
@@ -13,6 +14,22 @@ class Demoblaze:
         )
         self.driver.implicitly_wait(Config.IMPLICIT_WAIT)
         self.driver.get(Config.BASE_URL)
+
+    def retry_find_element(self, by, value, retries=3):
+        for _ in range(retries):
+            try:
+                return self.driver.find_element(by, value)
+            except StaleElementReferenceException:
+                time.sleep(1)
+        return self.driver.find_element(by, value)
+
+    def retry_find_elements(self, by, value, retries=3):
+        for _ in range(retries):
+            try:
+                return self.driver.find_elements(by, value)
+            except StaleElementReferenceException:
+                time.sleep(1)
+        return self.driver.find_elements(by, value)
 
     def navigate_to_category(self, category):
         category_link = self.driver.find_element(By.XPATH, f"//a[text()='{category}']")

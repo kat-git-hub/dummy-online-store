@@ -18,12 +18,12 @@ def test_navigate_to_category(demoblaze):
     assert len(category_elements) > 0
 
 
-# def test_select_product(demoblaze):
-#     demoblaze.navigate_to_category("Laptops")
-#     demoblaze.select_product("Dell i7 8gb")
-#     time.sleep(2)
-#     product_title = demoblaze.driver.find_element(By.XPATH, "//h2[contains(text(), 'Dell i7 8gb')]")
-#     assert product_title is not None
+def test_select_product(demoblaze):
+    demoblaze.navigate_to_category("Laptops")
+    demoblaze.select_product("Dell i7 8gb")
+    time.sleep(2)
+    product_title = demoblaze.driver.find_element(By.XPATH, "//h2[contains(text(), 'Dell i7 8gb')]")
+    assert product_title is not None
 
 
 def test_add_product_to_cart(demoblaze):
