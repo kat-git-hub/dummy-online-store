@@ -1,9 +1,8 @@
 import time
-import logging
 from config import Config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+
 
 
 class Demoblaze:
@@ -16,27 +15,27 @@ class Demoblaze:
         self.driver.implicitly_wait(Config.IMPLICIT_WAIT)
         self.driver.get(Config.BASE_URL)
 
-    def retry_find_element(self, by, value, retries=5):
-        delay = 1
-        for i in range(retries):
-            try:
-                return self.driver.find_element(by, value)
-            except StaleElementReferenceException as e:
-                logging.warning(f"StaleElementReferenceException encountered: {e}. Retrying {i + 1}/{retries} in {delay} seconds.")
-                time.sleep(delay)
-                delay *= 2
-        raise TimeoutException(f"Element with {by}='{value}' not found after {retries} retries.")
+    # def retry_find_element(self, by, value, retries=5):
+    #     delay = 1
+    #     for i in range(retries):
+    #         try:
+    #             return self.driver.find_element(by, value)
+    #         except StaleElementReferenceException as e:
+    #             logging.warning(f"StaleElementReferenceException encountered: {e}. Retrying {i + 1}/{retries} in {delay} seconds.")
+    #             time.sleep(delay)
+    #             delay *= 2
+    #     raise TimeoutException(f"Element with {by}='{value}' not found after {retries} retries.")
 
-    def retry_find_elements(self, by, value, retries=5):
-        delay = 1
-        for i in range(retries):
-            try:
-                return self.driver.find_elements(by, value)
-            except StaleElementReferenceException as e:
-                logging.warning(f"StaleElementReferenceException encountered: {e}. Retrying {i + 1}/{retries} in {delay} seconds.")
-                time.sleep(delay)
-                delay *= 2
-        raise TimeoutException(f"Elements with {by}='{value}' not found after {retries} retries.")
+    # def retry_find_elements(self, by, value, retries=5):
+        # delay = 1
+        # for i in range(retries):
+        #     try:
+        #         return self.driver.find_elements(by, value)
+        #     except StaleElementReferenceException as e:
+        #         logging.warning(f"StaleElementReferenceException encountered: {e}. Retrying {i + 1}/{retries} in {delay} seconds.")
+        #         time.sleep(delay)
+        #         delay *= 2
+        # raise TimeoutException(f"Elements with {by}='{value}' not found after {retries} retries.")
 
     def navigate_to_category(self, category):
         category_link = self.driver.find_element(By.XPATH, f"//a[text()='{category}']")
