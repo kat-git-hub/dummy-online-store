@@ -41,7 +41,7 @@ class Demoblaze:
 
     def go_to_cart(self):
         cart_link = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "Cart"))
+            EC.element_to_be_clickable((By.ID, "cartur"))
         )
         cart_link.click()
 
