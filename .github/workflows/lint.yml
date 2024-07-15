@@ -56,10 +56,22 @@ jobs:
       run: |
         make lint
     
-    - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v2.7.4
+    # - name: Test & publish code coverage
+    #   uses: paambaati/codeclimate-action@v2.7.4
+    #   env:
+    #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+    #   with:
+    #     coverageCommand: make test-coverage
+    #     debug: true
+    - name: Download Code Climate test reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-reporter
+        chmod +x ./cc-reporter
+
+    - name: Prepare Code Climate test reporter
+      run: ./cc-reporter before-build
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      with:
-        coverageCommand: make test-coverage
-        debug: true
+    
+    - name: Run tests and collect coverage
+      run: make test-coverage
