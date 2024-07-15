@@ -11,11 +11,13 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('--disable-gpu')
 
+
 @pytest.fixture(scope="module")
 def demoblaze():
     db = Demoblaze(options=chrome_options)
     yield db
     db.close()
+
 
 def test_navigate_to_category(demoblaze):
     demoblaze.navigate_to_category("Laptops")
@@ -25,6 +27,7 @@ def test_navigate_to_category(demoblaze):
     category_elements = demoblaze.driver.find_elements(By.CLASS_NAME, "card-title")
     assert len(category_elements) > 0
 
+
 def test_select_product(demoblaze):
     demoblaze.navigate_to_category("Laptops")
     demoblaze.select_product("Dell i7 8gb")
@@ -33,6 +36,7 @@ def test_select_product(demoblaze):
     )
     product_title = demoblaze.driver.find_element(By.XPATH, "//h2[contains(text(), 'Dell i7 8gb')]")
     assert product_title is not None
+
 
 def test_add_product_to_cart(demoblaze):
     demoblaze.navigate_to_category("Phones")
@@ -44,6 +48,7 @@ def test_add_product_to_cart(demoblaze):
     )
     cart_items = demoblaze.driver.find_elements(By.XPATH, "//tbody[@id='tbodyid']/tr")
     assert len(cart_items) > 0
+
 
 def test_place_order(demoblaze):
     demoblaze.navigate_to_category("Monitors")
@@ -64,6 +69,7 @@ def test_place_order(demoblaze):
     confirmation = demoblaze.driver.find_element(By.XPATH, "//h2[contains(text(), 'Thank you for your purchase!')]")
     assert confirmation is not None
 
+
 def test_go_to_cart(demoblaze):
     demoblaze.navigate_to_category("Laptops")
     demoblaze.select_product("MacBook air")
@@ -74,6 +80,7 @@ def test_go_to_cart(demoblaze):
     )
     cart_header = demoblaze.driver.find_element(By.XPATH, "//h2[contains(text(), 'Products')]")
     assert cart_header is not None
+
 
 def test_close_browser(demoblaze):
     demoblaze.close()
