@@ -1,20 +1,28 @@
 from config import Config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 
 
 class Demoblaze:
-    def __init__(self):
-        chrome_options = webdriver.ChromeOptions()
+    def __init__(self, selenium_hub_url=None, base_url=None, implicit_wait=None, chrome_options=None):
+        if chrome_options is None:
+            chrome_options = Options()
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            chrome_options.add_argument('--disable-gpu')
+
         self.driver = webdriver.Remote(
-            command_executor=Config.SELENIUM_HUB_URL,
+            command_executor=selenium_hub_url or Config.SELENIUM_HUB_URL,
             options=chrome_options
         )
-        self.driver.implicitly_wait(Config.IMPLICIT_WAIT)
-        self.driver.get(Config.BASE_URL)
+
+        self.driver.implicitly_wait(implicit_wait or Config.IMPLICIT_WAIT)
+        self.driver.get(base_url or Config.BASE_URL)
 
     def navigate_to_category(self, category_name):
         category_link = WebDriverWait(self.driver, 10).until(
