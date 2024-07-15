@@ -9,6 +9,11 @@ from selenium.common.exceptions import StaleElementReferenceException
 
 class Demoblaze:
     def __init__(self, selenium_hub_url=None, base_url=None, implicit_wait=None, chrome_options=None):
+        self.driver = self._setup_driver(selenium_hub_url, chrome_options)
+        self.driver.implicitly_wait(implicit_wait or Config.IMPLICIT_WAIT)
+        self.driver.get(base_url or Config.BASE_URL)
+
+    def _setup_driver(self, selenium_hub_url, chrome_options):
         if chrome_options is None:
             chrome_options = Options()
             chrome_options.add_argument('--headless')
@@ -16,13 +21,11 @@ class Demoblaze:
             chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument('--disable-gpu')
 
-        self.driver = webdriver.Remote(
+        driver = webdriver.Remote(
             command_executor=selenium_hub_url or Config.SELENIUM_HUB_URL,
             options=chrome_options
         )
-
-        self.driver.implicitly_wait(implicit_wait or Config.IMPLICIT_WAIT)
-        self.driver.get(base_url or Config.BASE_URL)
+        return driver
 
     def navigate_to_category(self, category_name):
         category_link = WebDriverWait(self.driver, 10).until(
@@ -48,16 +51,16 @@ class Demoblaze:
         add_to_cart_button.click()
 
     def go_to_cart(self):
-        cart_link = WebDriverWait(self.driver, 10).until(
+        cart_link = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.ID, "cartur"))
         )
         cart_link.click()
 
     def place_order(self, name, country, city, card, month, year):
-        WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Place Order')]"))
         ).click()
-        WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "name"))
         ).send_keys(name)
         self.driver.find_element(By.ID, "country").send_keys(country)
