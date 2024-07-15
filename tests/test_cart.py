@@ -4,7 +4,6 @@ from selenium.webdriver.common.by import By
 from demoblaze import Demoblaze
 
 
-
 @pytest.fixture
 def demoblaze():
     db = Demoblaze()
