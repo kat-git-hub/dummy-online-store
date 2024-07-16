@@ -71,12 +71,10 @@ jobs:
 
     - name: Prepare Code Climate test reporter
       run: ./cc-reporter before-build
-      #uses: paambaati/codeclimate-action@v2.7.4
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     
     - name: Run tests and collect coverage
-      #run: make test-coverage
       run: |
         poetry run coverage run -m pytest
         poetry run coverage xml
