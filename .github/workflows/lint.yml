@@ -28,7 +28,7 @@ jobs:
       run: |
         pip3 install poetry
         make install
-        pip3 install coverage
+        poetry add coverage pytest
     
     - name: Install Chrome
       run: |

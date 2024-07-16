@@ -11,6 +11,7 @@ python = "^3.12"
 selenium = "^4.0.0"
 flake8 = "^7.1.0"
 pytest = "^6.2.5"
+coverage = "^7.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
