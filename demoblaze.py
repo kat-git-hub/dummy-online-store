@@ -28,7 +28,7 @@ class Demoblaze:
         return driver
 
     def navigate_to_category(self, category_name):
-        category_link = WebDriverWait(self.driver, 10).until(
+        category_link = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.LINK_TEXT, category_name))
         )
         category_link.click()
@@ -36,7 +36,7 @@ class Demoblaze:
     def select_product(self, product_name):
         while True:
             try:
-                product_link = WebDriverWait(self.driver, 10).until(
+                product_link = WebDriverWait(self.driver, 20).until(
                     EC.element_to_be_clickable((By.LINK_TEXT, product_name))
                 )
                 product_link.click()
@@ -45,7 +45,7 @@ class Demoblaze:
                 continue
 
     def add_to_cart(self):
-        add_to_cart_button = WebDriverWait(self.driver, 10).until(
+        add_to_cart_button = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'Add to cart')]"))
         )
         add_to_cart_button.click()
