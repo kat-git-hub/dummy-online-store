@@ -71,4 +71,8 @@ class Demoblaze:
         self.driver.find_element(By.XPATH, "//button[contains(text(), 'Purchase')]").click()
 
     def close(self):
-        self.driver.quit()
+        if self.driver:
+            try:
+                self.driver.quit()
+            except Exception:
+                pass
