@@ -78,7 +78,10 @@ jobs:
     - name: Run tests and collect coverage
       #run: make test-coverage
       run: |
-        coverage run -m pytest
-        coverage xml
+        poetry run coverage run -m pytest
+        poetry run coverage xml
+    
+    - name: Upload coverage to Code Climate
+      run: ./cc-reporter after-build --exit-code $?
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
