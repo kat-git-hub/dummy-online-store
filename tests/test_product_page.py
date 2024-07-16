@@ -61,9 +61,9 @@ def test_go_to_cart(demoblaze):
     assert cart_header is not None
 
 
-# def test_close_browser(demoblaze):
-#     demoblaze.close()
-#     try:
-#         demoblaze.driver.title
-#     except Exception:
-#         assert True
+def test_close_browser(demoblaze):
+    demoblaze.close()
+    try:
+        demoblaze.driver.title
+    except Exception:
+        assert True

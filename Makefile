@@ -6,4 +6,3 @@ test:
 	poetry run python -m unittest discover -s tests
 test-coverage:
 	poetry run pytest --cov=demoblaze.py --cov-report xml
-	
