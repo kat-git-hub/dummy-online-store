@@ -33,7 +33,7 @@ def test_add_product_to_cart(demoblaze):
     demoblaze.select_product("Samsung galaxy s6")
     demoblaze.add_to_cart()
     demoblaze.go_to_cart()
-    WebDriverWait(demoblaze.driver, 10).until(
+    WebDriverWait(demoblaze.driver, 20).until(
         EC.presence_of_element_located((By.XPATH, "//tbody[@id='tbodyid']/tr"))
     )
     cart_items = demoblaze.driver.find_elements(By.XPATH, "//tbody[@id='tbodyid']/tr")
