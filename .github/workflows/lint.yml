@@ -75,4 +75,9 @@ jobs:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     
     - name: Run tests and collect coverage
-      run: make test-coverage
+      #run: make test-coverage
+      run: |
+        coverage run -m pytest
+        coverage xml
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
