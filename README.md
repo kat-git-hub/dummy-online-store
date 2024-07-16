@@ -1,6 +1,6 @@
 ![CI/CD](https://github.com/kat-git-hub/fake-online-store/actions/workflows/lint.yml/badge.svg)   [![Maintainability](https://api.codeclimate.com/v1/badges/22a8864c30d0bedc00a3/maintainability)](https://codeclimate.com/github/kat-git-hub/fake-online-store/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/22a8864c30d0bedc00a3/test_coverage)](https://codeclimate.com/github/kat-git-hub/fake-online-store/test_coverage)   ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 
-# Fake Online Store
+## Fake Online Store
 
 Project includes Selenium tests for the Demoblaze website.
 
