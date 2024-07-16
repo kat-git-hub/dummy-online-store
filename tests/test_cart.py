@@ -1,6 +1,8 @@
 import time
 import pytest
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from demoblaze import Demoblaze
 
 
@@ -31,6 +33,9 @@ def test_add_product_to_cart(demoblaze):
     demoblaze.select_product("Samsung galaxy s6")
     demoblaze.add_to_cart()
     demoblaze.go_to_cart()
+    WebDriverWait(demoblaze.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//tbody[@id='tbodyid']/tr"))
+    )
     cart_items = demoblaze.driver.find_elements(By.XPATH, "//tbody[@id='tbodyid']/tr")
     assert len(cart_items) > 0
 
