@@ -1,7 +1,7 @@
 # Fake Online Store
 
 ## CI/CD and Tests:
-   [![Maintainability](https://api.codeclimate.com/v1/badges/22a8864c30d0bedc00a3/maintainability)](https://codeclimate.com/github/kat-git-hub/fake-online-store/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/22a8864c30d0bedc00a3/test_coverage)](https://codeclimate.com/github/kat-git-hub/fake-online-store/test_coverage)
+   ![CI/CD](https://github.com/kat-git-hub/fake-online-store/actions/workflows/lint.yml/badge.svg)   [![Maintainability](https://api.codeclimate.com/v1/badges/22a8864c30d0bedc00a3/maintainability)](https://codeclimate.com/github/kat-git-hub/fake-online-store/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/22a8864c30d0bedc00a3/test_coverage)](https://codeclimate.com/github/kat-git-hub/fake-online-store/test_coverage)
 
 
 
@@ -69,6 +69,6 @@ docker-compose up -d
 
 
 -----------
-License 📜
+## License 📜
 
 Usage is provided under the [MIT](https://github.com/release-it/release-it/blob/main/LICENSE) License.
