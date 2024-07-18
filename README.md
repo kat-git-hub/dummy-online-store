@@ -17,19 +17,19 @@ The main feature of this project is to set up a Selenium Grid infrastructure usi
 
 ## Test Capabilities ✅
 
-Category Navigation: Automates the process of navigating through different product categories.
-Product Selection: Verifies the ability to select various products from the listings.
-Add to Cart: Ensures that products can be added to the shopping cart.
-Order Placement: Tests the complete checkout process, including form submissions.
-Cart Verification: Checks that the cart contents are correctly displayed and updated.
+- <b>Category Navigation:</b> Automates the process of navigating through different product categories.
+- <b>Product Selection:</b> Verifies the ability to select various products from the listings.
+- <b>Add to Cart:</b> Ensures that products can be added to the shopping cart.
+- <b>Order Placement:</b> Tests the complete checkout process, including form submissions.
+- <b>Cart Verification:</b> Checks that the cart contents are correctly displayed and updated.
 
 ## Technologies Used 🛠️
 
-Selenium Grid: For distributed test execution across multiple machines.
-Python: The primary programming language for the test scripts.
-Pytest: The testing framework used to write and run the tests.
-ChromeDriver: Used for running tests in a headless Chrome browser.
-Docker: For containerizing and managing the Selenium Grid and other dependencies.
+- <b>Selenium Grid:</b> For distributed test execution across multiple machines.
+- <b>Python:</b> The primary programming language for the test scripts.
+- <b>Pytest:</b> The testing framework used to write and run the tests.
+- <b>ChromeDriver:</b> Used for running tests in a headless Chrome browser.
+- <b>Docker:</b> For containerizing and managing the Selenium Grid and other dependencies.
 
 ## Getting Started 🚀
 
@@ -66,7 +66,6 @@ Start the container:
 ```
 docker-compose up -d
 ```
-
 
 -----------
 ## License 📜
