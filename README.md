@@ -9,7 +9,7 @@
    ![Docker](https://img.shields.io/badge/Docker-0db7ed?style=plastic&logo=docker&logoColor=white)
 
 ## Introduction ✨
-This project is a UI test automation suite for the fake online store [Demoblaze.com](https://www.demoblaze.com) using Selenium Grid, Docker and Python. The suite includes tests for navigating categories, selecting products, adding products to the cart, placing orders, and verifying cart contents.
+This project is a UI test automation suite for the sample e-commerce website [Demoblaze.com](https://www.demoblaze.com) using Selenium Grid, Docker and Python. The suite includes tests for navigating categories, selecting products, adding products to the cart, placing orders, and verifying cart contents.
 
 ## Overview 📋
 
