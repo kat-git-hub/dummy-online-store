@@ -38,8 +38,8 @@ To get started with running the tests locally, ensure you have the necessary dep
 - Clone the repository:
 
 ```
-git clone https://github.com/yourusername/fake-online-store.git
-cd fake-online-store
+git clone https://github.com/yourusername/dummy-online-store.git
+cd dummy-online-store
 ```
 
 - Install [Poetry](https://python-poetry.org/docs/#installing-with-pipx) if it is not already installed.
